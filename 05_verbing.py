@@ -10,9 +10,12 @@ Se o tamanho da string for menor que 3, não altere nada.
 Retorne o resultado da string.
 """
 
-def verbing(s):
-    # +++ SUA SOLUÇÃO +++
-    return
+def verbing(word):
+    if word[-3:] == 'ing':
+        word +='ly'
+    elif len(word) > 2:
+        word += 'ing'
+    return word
 
 
 # --- Daqui para baixo são apenas códigos auxiliáries de teste. ---
