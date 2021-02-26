@@ -13,7 +13,7 @@ import re
 def not_bad(phrase):
     notpos, badpos = phrase.find('not'), phrase.find('bad')
     
-    if notpos != -1 and badpos != -1 and badpos > notpos:
+    if badpos > notpos:
         substring_not_bad = phrase[notpos:badpos + 3]
         phrase = phrase.replace(substring_not_bad, 'good') 
     
