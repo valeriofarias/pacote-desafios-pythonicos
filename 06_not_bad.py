@@ -9,9 +9,14 @@ por 'good' e retorne a string resultante.
 Exemplo: 'The dinner is not that bad!' retorna 'The dinner is good!'
 """
 
-def not_bad(s):
-    # +++ SUA SOLUÇÃO +++
-    return
+def not_bad(phrase):
+    notpos, badpos = phrase.find('not'), phrase.find('bad')
+    
+    if notpos != -1 and badpos != -1 and badpos > notpos:
+        substring_not_bad = phrase[notpos:badpos + 3]
+        phrase = phrase.replace(substring_not_bad, 'good') 
+    
+    return phrase 
 
 
 # --- Daqui para baixo são apenas códigos auxiliáries de teste. ---
