@@ -43,3 +43,5 @@ if __name__ == '__main__':
     test(mix_up, ('gnash', 'sport'), 'spash gnort')
     test(mix_up, ('pezzy', 'firm'), 'fizzy perm')
     test(mix_up, ('a', 'b'), '')
+    test(mix_up, ('a', 'bc'), '')
+    test(mix_up, ('az', 'b'), '')
