@@ -21,10 +21,16 @@ def not_bad(phrase):
     
 def regex_not_bad(phrase):
     pattern = r"not.*bad" 
-    replace = r"good"
-    return re.sub(pattern, replace, phrase)
+    repl = r"good"
+    return re.sub(pattern, repl, phrase)
+
+
+def one_line_not_bad(phrase):
+    return phrase if phrase.find('not') > phrase.find('bad') else phrase.replace(phrase[phrase.find('not'):phrase.find('bad') + 3], 'good')
     
 
+def regex_one_line_not_bad(phrase):
+    return re.sub(pattern='not.*bad', repl='good', string=phrase, flags=re.IGNORECASE) 
 
 
 # --- Daqui para baixo são apenas códigos auxiliáries de teste. ---
@@ -59,3 +65,17 @@ if __name__ == '__main__':
     test(regex_not_bad, 'This tea is not hot', 'This tea is not hot')
     test(regex_not_bad, "It's bad yet not", "It's bad yet not")
     test(regex_not_bad, "It's notbad ok.", "It's good ok.")
+    
+    test(one_line_not_bad, 'This movie is not so bad', 'This movie is good')
+    test(one_line_not_bad, 'This dinner is not that bad!', 'This dinner is good!')
+    test(one_line_not_bad, 'This tea is not hot', 'This tea is not hot')
+    test(one_line_not_bad, "It's bad yet not", "It's bad yet not")
+    test(one_line_not_bad, "It's notbad ok.", "It's good ok.")
+    
+    test(regex_one_line_not_bad, 'This movie is not so bad', 'This movie is good')
+    test(regex_one_line_not_bad, 'This dinner is not that bad!', 'This dinner is good!')
+    test(regex_one_line_not_bad, 'This tea is not hot', 'This tea is not hot')
+    test(regex_one_line_not_bad, "It's bad yet not", "It's bad yet not")
+    test(regex_one_line_not_bad, "It's notbad ok.", "It's good ok.")
+    test(regex_one_line_not_bad, "It's Not bad ok.", "It's good ok.")
+    test(regex_one_line_not_bad, "It's not bAd ok.", "It's good ok.")
