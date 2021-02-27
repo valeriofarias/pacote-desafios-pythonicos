@@ -19,6 +19,16 @@ def not_bad(phrase):
     
     return phrase
     
+def not_bad_two(phrase):
+    not_, bad_ = phrase.find('not'), phrase.find('bad')
+    
+    if not_ < bad_:
+        edge = phrase[bad_+3:] #if phrase[-1] in '?!.' else ''
+        phrase = phrase[:not_] + 'good' + edge 
+
+    return phrase
+    
+    
 def regex_not_bad(phrase):
     pattern = r"not.*bad" 
     repl = r"good"
@@ -59,6 +69,12 @@ if __name__ == '__main__':
     test(not_bad, 'This tea is not hot', 'This tea is not hot')
     test(not_bad, "It's bad yet not", "It's bad yet not")
     test(not_bad, "It's notbad ok.", "It's good ok.")
+    
+    test(not_bad_two, 'This movie is not so bad', 'This movie is good')
+    test(not_bad_two, 'This dinner is not that bad!', 'This dinner is good!')
+    test(not_bad_two, 'This tea is not hot', 'This tea is not hot')
+    test(not_bad_two, "It's bad yet not", "It's bad yet not")
+    test(not_bad_two, "It's not bad ok.", "It's good ok.")
     
     test(regex_not_bad, 'This movie is not so bad', 'This movie is good')
     test(regex_not_bad, 'This dinner is not that bad!', 'This dinner is good!')
