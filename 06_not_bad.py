@@ -15,7 +15,7 @@ expressiva e flexível e implemente os seguintes testes:
 2. Resolva o erro de digitação da frase vir com 'notbad' juntos
 3. Resolva o caso em que tem um bad antes do not bad: 'It's bad or not too bad.'
 4. Resolva o caso que tem dois nots antes do bad: 'This idea is not not so bad.'
-5. Resolva o caso que possui mais de dois pares not bad no texto: 'This dinner is not that bad, really not bad.'
+5. Resolva o caso que possui mais de um par de not bad no texto: 'This dinner is not that bad, really not bad.'
 """
 
 import re
