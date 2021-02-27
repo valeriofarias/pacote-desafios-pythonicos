@@ -23,7 +23,7 @@ def not_bad_two(phrase):
     not_, bad_ = phrase.find('not'), phrase.find('bad')
     
     if not_ < bad_:
-        edge = phrase[bad_+3:] #if phrase[-1] in '?!.' else ''
+        edge = phrase[bad_ + 3:] 
         phrase = phrase[:not_] + 'good' + edge 
 
     return phrase
