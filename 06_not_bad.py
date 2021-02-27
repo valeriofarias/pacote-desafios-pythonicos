@@ -74,7 +74,7 @@ if __name__ == '__main__':
     test(not_bad_two, 'This dinner is not that bad!', 'This dinner is good!')
     test(not_bad_two, 'This tea is not hot', 'This tea is not hot')
     test(not_bad_two, "It's bad yet not", "It's bad yet not")
-    test(not_bad_two, "It's not bad ok.", "It's good ok.")
+    test(not_bad_two, "It's notbad ok.", "It's good ok.")
     
     test(regex_not_bad, 'This movie is not so bad', 'This movie is good')
     test(regex_not_bad, 'This dinner is not that bad!', 'This dinner is good!')
