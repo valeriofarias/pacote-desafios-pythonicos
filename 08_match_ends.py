@@ -11,10 +11,18 @@ PS: Python não possui o operador ++, porém += funciona.
 def match_ends(words):
     n = 0
     for word in words:
-        n += 1 if len(word)>1 and word[0] == word[-1] else 0
+        n += 1 if len(word) > 1 and word[0] == word[-1] else 0
 
     return n    
 
+
+def match_ends_list_comprehension(words):
+    return len([word for word in words if len(word) > 1 and word[0] == word[-1]]) 
+
+
+
+def match_ends_generator(words):
+    return sum((1 for word in words if len(word) > 1 and word[0] == word[-1])) 
 
 # --- Daqui para baixo são apenas códigos auxiliáries de teste. ---
 
@@ -40,3 +48,12 @@ if __name__ == '__main__':
     test(match_ends, ['aba', 'xyz', 'aa', 'x', 'bbb'], 3)
     test(match_ends, ['', 'x', 'xy', 'xyx', 'xx'], 2)
     test(match_ends, ['aaa', 'be', 'abc', 'hello'], 1)
+
+    test(match_ends_list_comprehension, ['aba', 'xyz', 'aa', 'x', 'bbb'], 3)
+    test(match_ends_list_comprehension, ['', 'x', 'xy', 'xyx', 'xx'], 2)
+    test(match_ends_list_comprehension, ['aaa', 'be', 'abc', 'hello'], 1)
+    
+    
+    test(match_ends_generator, ['aba', 'xyz', 'aa', 'x', 'bbb'], 3)
+    test(match_ends_generator, ['', 'x', 'xy', 'xyx', 'xx'], 2)
+    test(match_ends_generator, ['aaa', 'be', 'abc', 'hello'], 1)
