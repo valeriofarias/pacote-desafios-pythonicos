@@ -10,9 +10,41 @@ Exemplo: 'abcde', a metade da frente é 'abc' e a de trás é 'de'.
 Finalmente, dadas duas strings a e b, retorne uma string na forma:
 a-frente + b-frente + a-trás + b-trás
 """
+import math
+
 def front_back(a, b):
-    # +++ SUA SOLUÇÃO +++
-    return
+    abegin = a[:int(len(a)/2)] if len(a) % 2 == 0 else a[:int(len(a)/2)+1]
+    aend = a[int(len(a)/2):] if len(a) % 2 == 0 else a[int(len(a)/2)+1:]
+
+    bbegin = b[:int(len(b)/2)] if len(b) % 2 == 0 else b[:int(len(b)/2)+1]
+    bend  = b[int(len(b)/2):] if len(b) % 2 == 0 else b[int(len(b)/2)+1:]
+
+    return abegin + bbegin + aend + bend
+    
+    
+def front_back_two(a, b):
+    def begins(s):
+        return s[:int(len(s)/2)] if len(s) % 2 == 0 else s[:int(len(s)/2)+1]
+
+    def ends(s):
+        return s[int(len(s)/2):] if len(s) % 2 == 0 else s[int(len(s)/2)+1:]
+
+    return ''.join([begins(a), begins(b), ends(a), ends(b)])
+
+
+# --- Solução mais expressiva 
+    
+def front_back_using_ceil(a, b):
+    def index(s):
+        return math.ceil(len(s)/2)
+
+    def begins(s):
+        return s[:index(s)] 
+
+    def ends(s):
+        return s[index(s):] 
+
+    return ''.join([begins(a), begins(b), ends(a), ends(b)])
 
 
 # --- Daqui para baixo são apenas códigos auxiliáries de teste. ---
@@ -39,3 +71,11 @@ if __name__ == '__main__':
     test(front_back, ('abcd', 'xy'), 'abxcdy')
     test(front_back, ('abcde', 'xyz'), 'abcxydez')
     test(front_back, ('Kitten', 'Donut'), 'KitDontenut')
+
+    test(front_back_two, ('abcd', 'xy'), 'abxcdy')
+    test(front_back_two, ('abcde', 'xyz'), 'abcxydez')
+    test(front_back_two, ('Kitten', 'Donut'), 'KitDontenut')
+    
+    test(front_back_using_ceil, ('abcd', 'xy'), 'abxcdy')
+    test(front_back_using_ceil, ('abcde', 'xyz'), 'abcxydez')
+    test(front_back_using_ceil, ('Kitten', 'Donut'), 'KitDontenut')
