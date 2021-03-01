@@ -28,7 +28,7 @@ def match_ends_generator(words):
 import re
 def match_ends_regex(words):
     phrase = '\n'.join(words)
-    match = re.findall(pattern = r'^(.).*\1$',string = phrase, flags=re.MULTILINE)
+    match = re.findall(pattern = r'^(.).*\1$', string = phrase, flags=re.MULTILINE)
     return len(match)      
 
 
