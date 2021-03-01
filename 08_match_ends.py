@@ -22,7 +22,15 @@ def match_ends_list_comprehension(words):
 
 
 def match_ends_generator(words):
-    return sum((1 for word in words if len(word) > 1 and word[0] == word[-1])) 
+    return sum((1 for word in words if len(word) > 1 and word[0] == word[-1]))
+    
+
+import re
+def match_ends_regex(words):
+    phrase = '\n'.join(words)
+    match = re.findall(pattern = r'^(.).*\1$',string = phrase, flags=re.MULTILINE)
+    return len(match)      
+
 
 # --- Daqui para baixo são apenas códigos auxiliáries de teste. ---
 
@@ -53,7 +61,10 @@ if __name__ == '__main__':
     test(match_ends_list_comprehension, ['', 'x', 'xy', 'xyx', 'xx'], 2)
     test(match_ends_list_comprehension, ['aaa', 'be', 'abc', 'hello'], 1)
     
-    
     test(match_ends_generator, ['aba', 'xyz', 'aa', 'x', 'bbb'], 3)
     test(match_ends_generator, ['', 'x', 'xy', 'xyx', 'xx'], 2)
     test(match_ends_generator, ['aaa', 'be', 'abc', 'hello'], 1)
+
+    test(match_ends_regex, ['aba', 'xyz', 'aa', 'x', 'bbb'], 3)
+    test(match_ends_regex, ['', 'x', 'xy', 'xyx', 'xx'], 2)
+    test(match_ends_regex, ['aaa', 'be', 'abc', 'hello'], 1)
