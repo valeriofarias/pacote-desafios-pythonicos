@@ -44,7 +44,7 @@ def front_back_using_ceil(a, b):
     def ends(s):
         return s[index(s):] 
 
-    return ''.join([begins(a), begins(b), ends(a), ends(b)])
+    return f'{begins(a)}{begins(b)}{ends(a)}{ends(b)}'
 
 
 # --- Daqui para baixo são apenas códigos auxiliáries de teste. ---
