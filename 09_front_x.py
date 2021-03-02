@@ -12,8 +12,12 @@ antes de combina-las.
 """
 
 def front_x(words):
-    # +++ SUA SOLUÇÃO +++
-    return
+    listx = [word for word in words if word[0] == 'x']
+    list_not_x = [word for word in words if word[0] != 'x']
+    listx.sort()
+    list_not_x.sort()
+    listx.extend(list_not_x)
+    return listx
 
 
 # --- Daqui para baixo são apenas códigos auxiliáries de teste. ---
