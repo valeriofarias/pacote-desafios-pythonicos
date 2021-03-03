@@ -17,6 +17,10 @@ def front_x(words):
     list_not_x = [word for word in words if word[0] != 'x']
     listx.extend(list_not_x)
     return listx
+    
+def front_x_sort_with_key(words):
+    words.sort(key=lambda x : x if x[0] == 'x' else f'z{x}')
+    return words 
 
 
 # --- Daqui para baixo são apenas códigos auxiliáries de teste. ---
@@ -45,4 +49,11 @@ if __name__ == '__main__':
     test(front_x, ['ccc', 'bbb', 'aaa', 'xcc', 'xaa'],
          ['xaa', 'xcc', 'aaa', 'bbb', 'ccc'])
     test(front_x, ['mix', 'xyz', 'apple', 'xanadu', 'aardvark'],
+         ['xanadu', 'xyz', 'aardvark', 'apple', 'mix'])
+
+    test(front_x_sort_with_key, ['bbb', 'ccc', 'axx', 'xzz', 'xaa'],
+         ['xaa', 'xzz', 'axx', 'bbb', 'ccc'])
+    test(front_x_sort_with_key, ['ccc', 'bbb', 'aaa', 'xcc', 'xaa'],
+         ['xaa', 'xcc', 'aaa', 'bbb', 'ccc'])
+    test(front_x_sort_with_key, ['mix', 'xyz', 'apple', 'xanadu', 'aardvark'],
          ['xanadu', 'xyz', 'aardvark', 'apple', 'mix'])
