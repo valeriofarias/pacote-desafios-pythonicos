@@ -22,6 +22,8 @@ def front_x_sort_with_key(words):
     words.sort(key=lambda x : x if x[0] == 'x' else f'z{x}')
     return words 
 
+def front_x_sort_with_key_one_line(words):
+    return sorted(words, key=lambda x : x if x[0] == 'x' else f'z{x}')
 
 # --- Daqui para baixo são apenas códigos auxiliáries de teste. ---
 
@@ -56,4 +58,11 @@ if __name__ == '__main__':
     test(front_x_sort_with_key, ['ccc', 'bbb', 'aaa', 'xcc', 'xaa'],
          ['xaa', 'xcc', 'aaa', 'bbb', 'ccc'])
     test(front_x_sort_with_key, ['mix', 'xyz', 'apple', 'xanadu', 'aardvark'],
+         ['xanadu', 'xyz', 'aardvark', 'apple', 'mix'])
+
+    test(front_x_sort_with_key_one_line, ['bbb', 'ccc', 'axx', 'xzz', 'xaa'],
+         ['xaa', 'xzz', 'axx', 'bbb', 'ccc'])
+    test(front_x_sort_with_key_one_line, ['ccc', 'bbb', 'aaa', 'xcc', 'xaa'],
+         ['xaa', 'xcc', 'aaa', 'bbb', 'ccc'])
+    test(front_x_sort_with_key_one_line, ['mix', 'xyz', 'apple', 'xanadu', 'aardvark'],
          ['xanadu', 'xyz', 'aardvark', 'apple', 'mix'])
