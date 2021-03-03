@@ -10,14 +10,28 @@ Irá retornar: ['xanadu', 'xyz', 'aardvark', 'apple', 'banana' ,'mix']
 Dica: Isso pode ser resolvido criando 2 listas e ordenando cada uma
 antes de combina-las.
 """
-
 def front_x(words):
+    words.sort()
+    listx, list_not_x = [], []
+    for word in words:
+        listx.append(word) if word.startswith('x') else list_not_x.append(word)
+    listx.extend(list_not_x)    
+    return listx
+
+def front_x_list_comprehension(words):
     words.sort()
     listx = [word for word in words if word[0] == 'x']
     list_not_x = [word for word in words if word[0] != 'x']
     listx.extend(list_not_x)
     return listx
-    
+
+def front_x_generator(words):
+    words.sort()
+    listx = list(word for word in words if word[0] == 'x')
+    list_not_x = list(word for word in words if word[0] != 'x')
+    listx.extend(list_not_x)
+    return listx
+
 def front_x_sort_with_key(words):
     words.sort(key=lambda x : x if x[0] == 'x' else f'z{x}')
     return words 
@@ -51,6 +65,20 @@ if __name__ == '__main__':
     test(front_x, ['ccc', 'bbb', 'aaa', 'xcc', 'xaa'],
          ['xaa', 'xcc', 'aaa', 'bbb', 'ccc'])
     test(front_x, ['mix', 'xyz', 'apple', 'xanadu', 'aardvark'],
+         ['xanadu', 'xyz', 'aardvark', 'apple', 'mix'])
+         
+    test(front_x_list_comprehension, ['bbb', 'ccc', 'axx', 'xzz', 'xaa'],
+         ['xaa', 'xzz', 'axx', 'bbb', 'ccc'])
+    test(front_x_list_comprehension, ['ccc', 'bbb', 'aaa', 'xcc', 'xaa'],
+         ['xaa', 'xcc', 'aaa', 'bbb', 'ccc'])
+    test(front_x_list_comprehension, ['mix', 'xyz', 'apple', 'xanadu', 'aardvark'],
+         ['xanadu', 'xyz', 'aardvark', 'apple', 'mix'])         
+
+    test(front_x_generator, ['bbb', 'ccc', 'axx', 'xzz', 'xaa'],
+         ['xaa', 'xzz', 'axx', 'bbb', 'ccc'])
+    test(front_x_generator, ['ccc', 'bbb', 'aaa', 'xcc', 'xaa'],
+         ['xaa', 'xcc', 'aaa', 'bbb', 'ccc'])
+    test(front_x_generator, ['mix', 'xyz', 'apple', 'xanadu', 'aardvark'],
          ['xanadu', 'xyz', 'aardvark', 'apple', 'mix'])
 
     test(front_x_sort_with_key, ['bbb', 'ccc', 'axx', 'xzz', 'xaa'],
