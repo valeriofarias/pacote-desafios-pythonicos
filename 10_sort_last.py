@@ -35,8 +35,8 @@ def sort_last_get_item(tuples):
     
 
 # https://www.codeproject.com/articles/1112298/the-simplest-sorting-algorithm-example-why-would-s    
-# Bubble sort is one of the worst sort algorithm in performance but is the best in didatic, it's simple to underestand.
-# The above function is only an example to figure out how bubble sort works.
+# Bubble sort is one of the worst sort algorithm in performance but it is the best in didatic, it's simple to underestand.
+# The function bellow is only an example to figure out how bubble sort works.
 def bubble_sort_algorithm(lista):
     for item in range(1, len(lista)):
         for i in range(0, len(lista)-1):
