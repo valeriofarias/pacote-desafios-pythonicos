@@ -9,16 +9,39 @@ Irá retornar: [1, 2, 3]
 """
 
 def remove_adjacent(nums):
-    if nums == []:
-        return nums
-        
-    lista = [nums[0]]
-    for i, item in enumerate(nums):
-        if nums[i] != lista[-1]:
-            lista.append(nums[i])   
-    return lista
+    listn = [nums[0]] if nums else []
+    for i, j in enumerate(nums):
+        if nums[i] != listn[-1]:
+            listn.append(nums[i])   
+    return listn
+    
+    
+def remove_adjacent_using_del(nums):
+    len_nums, i = len(nums), 0
+    while i < len_nums - 1:
+        if nums[i] == nums[i + 1]:
+            del nums[i]
+            len_nums = len(nums)
+        else:
+            i += 1
+    return nums
     
 
+def remove_adjacent_using_zip(nums):
+    listn = [nums[0]] if nums else []
+    for i, j in zip(nums, nums[1:]):
+        if i != j:
+            listn.append(j)
+    return listn
+   
+
+def remove_adjacent_one_line(nums):
+    return [i for i, j in zip(nums, nums[1:]+[None]) if i != j]
+
+
+from itertools import groupby
+def remove_adjacent_groupby(nums):
+    return [i for i, j in groupby(nums)]
 
 
 # --- Daqui para baixo são apenas códigos auxiliáries de teste. ---
@@ -46,3 +69,24 @@ if __name__ == '__main__':
     test(remove_adjacent, [2, 2, 3, 3, 3], [2, 3])
     test(remove_adjacent, [], [])
     test(remove_adjacent, [2, 2, 3, 3, 3, 2, 2], [2, 3, 2])
+    
+    test(remove_adjacent_using_del, [1, 2, 2, 3], [1, 2, 3])
+    test(remove_adjacent_using_del, [2, 2, 3, 3, 3], [2, 3])
+    test(remove_adjacent_using_del, [], [])
+    test(remove_adjacent_using_del, [2, 2, 3, 3, 3, 2, 2], [2, 3, 2])
+    
+
+    test(remove_adjacent_using_zip, [1, 2, 2, 3], [1, 2, 3])
+    test(remove_adjacent_using_zip, [2, 2, 3, 3, 3], [2, 3])
+    test(remove_adjacent_using_zip, [], [])
+    test(remove_adjacent_using_zip, [2, 2, 3, 3, 3, 2, 2], [2, 3, 2])
+    
+    test(remove_adjacent_one_line, [1, 2, 2, 3], [1, 2, 3])
+    test(remove_adjacent_one_line, [2, 2, 3, 3, 3], [2, 3])
+    test(remove_adjacent_one_line, [], [])
+    test(remove_adjacent_one_line, [2, 2, 3, 3, 3, 2, 2], [2, 3, 2])
+
+    test(remove_adjacent_groupby, [1, 2, 2, 3], [1, 2, 3])
+    test(remove_adjacent_groupby, [2, 2, 3, 3, 3], [2, 3])
+    test(remove_adjacent_groupby, [], [])
+    test(remove_adjacent_groupby, [2, 2, 3, 3, 3, 2, 2], [2, 3, 2])
