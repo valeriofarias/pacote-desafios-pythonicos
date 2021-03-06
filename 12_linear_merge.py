@@ -38,6 +38,7 @@ def linear_merge(list1, list2):
                olist.append(list2[i])
             
     return olist
+
  
 from heapq import merge  
 def linear_merge_heapq(list1, list2):
