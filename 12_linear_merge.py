@@ -10,8 +10,36 @@ A sua solução deve rodar em tempo linear, ou seja, deve fazer uma
 """
 
 def linear_merge(list1, list2):
-    list1.extend(list2)
-    return sorted(list1)
+    list1_len, list2_len, olist = len(list1)-1, len(list2)-1, []
+
+    if list1_len > list2_len:
+        for i, j in enumerate(list1):
+            if i <= list2_len:
+                if list2[i] < list1[i]:
+                    olist.append(list2[i])
+                    olist.append(list1[i])
+                else:
+                    olist.append(list1[i])
+                    olist.append(list2[i])
+            else:
+                olist.append(list1[i])
+    
+    elif list1_len < list2_len:
+        for i, j in enumerate(list2):
+            if i <= list1_len:
+                if list2[i] < list1[i]:
+                    olist.append(list2[i])
+                    olist.append(list1[i])
+                else:
+                    olist.append(list1[i])
+                    olist.append(list2[i])
+		
+            else:
+               olist.append(list2[i])
+            
+    return olist
+    
+
 
 
 # --- Daqui para baixo são apenas códigos auxiliáries de teste. ---
