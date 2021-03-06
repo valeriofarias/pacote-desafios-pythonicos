@@ -38,8 +38,10 @@ def linear_merge(list1, list2):
                olist.append(list2[i])
             
     return olist
-    
-
+ 
+from heapq import merge  
+def linear_merge_heapq(list1, list2):
+    return list(merge(list1, list2))
 
 
 # --- Daqui para baixo são apenas códigos auxiliáries de teste. ---
@@ -68,4 +70,11 @@ if __name__ == '__main__':
     test(linear_merge, (['aa', 'xx'], ['bb', 'cc', 'zz']),
          ['aa', 'bb', 'cc', 'xx', 'zz'])
     test(linear_merge, (['aa', 'aa'], ['aa', 'bb', 'bb']),
+         ['aa', 'aa', 'aa', 'bb', 'bb'])
+
+    test(linear_merge_heapq, (['aa', 'xx', 'zz'], ['bb', 'cc']),
+         ['aa', 'bb', 'cc', 'xx', 'zz'])
+    test(linear_merge_heapq, (['aa', 'xx'], ['bb', 'cc', 'zz']),
+         ['aa', 'bb', 'cc', 'xx', 'zz'])
+    test(linear_merge_heapq, (['aa', 'aa'], ['aa', 'bb', 'bb']),
          ['aa', 'aa', 'aa', 'bb', 'bb'])
