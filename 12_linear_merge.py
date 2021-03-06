@@ -42,6 +42,21 @@ def linear_merge(list1, list2):
 from heapq import merge  
 def linear_merge_heapq(list1, list2):
     return list(merge(list1, list2))
+    
+    
+# Inspirado por https://github.com/dougfraga/pythonic-challenges/blob/master/12_linear_merge.py
+# Obs. Faço uma cópia de list1 e list2 para que sejam mostradas no teste, pois o pop deleta os itens.
+# Obs2. Uso len(list1) + len(list2) pois é mais rápido que len(list1 + list2). Esse último é inclusive 
+# uma concatenação das listas e perderia a regra do merge linear.
+from collections import deque
+def linear_merge_deque(list1, list2):
+    list1_, list2_, olist = list1[:], list2[:], deque()
+    while len(list1_) + len(list2_) > 0:
+        if list1_[-1:] > list2_[-1:]:
+            olist.appendleft(list1_.pop())
+        else:
+            olist.appendleft(list2_.pop())
+    return list(olist)
 
 
 # --- Daqui para baixo são apenas códigos auxiliáries de teste. ---
@@ -78,3 +93,11 @@ if __name__ == '__main__':
          ['aa', 'bb', 'cc', 'xx', 'zz'])
     test(linear_merge_heapq, (['aa', 'aa'], ['aa', 'bb', 'bb']),
          ['aa', 'aa', 'aa', 'bb', 'bb'])
+
+    test(linear_merge_deque, (['aa', 'xx', 'zz'], ['bb', 'cc']),
+         ['aa', 'bb', 'cc', 'xx', 'zz'])
+    test(linear_merge_deque, (['aa', 'xx'], ['bb', 'cc', 'zz']),
+         ['aa', 'bb', 'cc', 'xx', 'zz'])
+    test(linear_merge_deque, (['aa', 'aa'], ['aa', 'bb', 'bb']),
+         ['aa', 'aa', 'aa', 'bb', 'bb'])
+
