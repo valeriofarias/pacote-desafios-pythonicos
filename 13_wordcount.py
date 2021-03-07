@@ -53,10 +53,19 @@ e conferindo cada etapa do seu progresso.
 
 import sys
 
-
-# +++ SUA SOLUÇÃO +++
 # Defina as funções print_words(filename) e print_top(filename).
+from itertools import groupby
+def print_words(filename):
+    file_ = open(filename)  
+    text = file_.read()
+    list_ = text.split()
+    listo = sorted([str.lower(i) for i in list_])
+    dict_ = {key:len(list(group)) for key, group in groupby(listo)}
+   
+    for key,value in dict_.items():
+        print(key, value)
 
+    
 
 # A função abaixo chama print_words() ou print_top() de acordo com os
 # parêtros do programa.
