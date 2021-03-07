@@ -74,17 +74,23 @@ def wordcount(wordlist):
 def print_words(filename):
     wordlist = sorted(lower_words(split_text(open_file(filename))))
     wordcountdict = wordcount(wordlist)  
-
+    
+    wordcountresult = ''
     for key,value in wordcountdict.items():
-        print(key, value)
+        wordcountresult += f'{key} {value}\n'
+    
+    return wordcountresult
 
 
 def print_top(filename):
     wordlist = lower_words(split_text(open_file(filename)))
     wordcountdict_top20 = dict(sorted(wordcount(wordlist).items() , reverse=True, key=lambda x: x[1])[:20])
     
+    wordcount_top20 = ''
     for key,value in wordcountdict_top20.items():
-        print(key, value)
+        wordcount_top20 += f'{key} {value}\n'
+    
+    return wordcount_top20
 
 # A função abaixo chama print_words() ou print_top() de acordo com os
 # parêtros do programa.
@@ -96,9 +102,9 @@ def main():
     option = sys.argv[1]
     filename = sys.argv[2]
     if option == '--count':
-        print_words(filename)
+        print(print_words(filename))
     elif option == '--topcount':
-        print_top(filename)
+        print(print_top(filename))
     else:
         print('unknown option: ' + option)
         sys.exit(1)
