@@ -65,7 +65,17 @@ def print_words(filename):
     for key,value in dict_.items():
         print(key, value)
 
+
+def print_top(filename):
+    file_ = open(filename)  
+    text = file_.read()
+    list_ = text.split()
+    list_ = [str.lower(i) for i in list_]
+    dict_ = {key:len(list(group)) for key, group in groupby(list_)}
+    dicto = dict(sorted(dict_.items() , reverse=True, key=lambda x: x[1])[:20])
     
+    for key,value in dicto.items():
+        print(key, value)
 
 # A função abaixo chama print_words() ou print_top() de acordo com os
 # parêtros do programa.
