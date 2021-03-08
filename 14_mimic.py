@@ -77,8 +77,7 @@ def print_mimic(mimic_dict, word):
         words.append(new_word)
         word = new_word  
   
-  print(' '.join(words))
-  return words
+  return ' '.join(words)
 
 
 # Chama mimic_dict() e print_mimic()
@@ -88,7 +87,7 @@ def main():
     sys.exit(1)
 
   dict_ = mimic_dict(sys.argv[1])
-  print_mimic(dict_, '')
+  print(print_mimic(dict_, ''))
 
 
 if __name__ == '__main__':
