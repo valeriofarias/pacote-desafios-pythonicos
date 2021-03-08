@@ -49,6 +49,9 @@ Dicas:
 * Use str.split() (sem parêmatros) para fazer separar as palavras.
 * Não construa todo o programade uma vez. Faça por partes executando
 e conferindo cada etapa do seu progresso.
+
+Ver solução otimizada segundo orientação do HB em:
+https://github.com/davischoll/pacote-desafios-pythonicos/blob/master/13_wordcount.py
 """
 
 import sys
