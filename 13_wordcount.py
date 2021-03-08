@@ -54,6 +54,9 @@ e conferindo cada etapa do seu progresso.
 import sys
 from itertools import groupby
 
+def report(words):
+    return '\n'.join([f'{w} {qty}' for w, qty in words])
+
 def open_file(filename):
     with open(filename) as file_object:
         return file_object.read()
@@ -68,29 +71,20 @@ def lower_words(list):
 
     
 def wordcount(wordlist):
-    return {key:len(list(group)) for key, group in groupby(wordlist)}
+    return {w:len(list(qty)) for w, qty in groupby(wordlist)}
 
 
 def print_words(filename):
     wordlist = sorted(lower_words(split_text(open_file(filename))))
     wordcountdict = wordcount(wordlist)  
-    
-    wordcountresult = ''
-    for key,value in wordcountdict.items():
-        wordcountresult += f'{key} {value}\n'
-    
-    return wordcountresult
+    return report(wordcountdict.items())
 
 
 def print_top(filename):
     wordlist = lower_words(split_text(open_file(filename)))
     wordcountdict_top20 = dict(sorted(wordcount(wordlist).items() , reverse=True, key=lambda x: x[1])[:20])
-    
-    wordcount_top20 = ''
-    for key,value in wordcountdict_top20.items():
-        wordcount_top20 += f'{key} {value}\n'
-    
-    return wordcount_top20
+    return report(wordcountdict_top20.items())
+
 
 # A função abaixo chama print_words() ou print_top() de acordo com os
 # parêtros do programa.
