@@ -54,8 +54,10 @@ e conferindo cada etapa do seu progresso.
 import sys
 from itertools import groupby
 
+
 def report(words):
     return '\n'.join([f'{w} {qty}' for w, qty in words])
+
 
 def open_file(filename):
     with open(filename) as file_object:
@@ -67,7 +69,7 @@ def split_text(text):
 
     
 def lower_words(list):
-    return [str.lower(i) for i in list]
+    return [str.lower(w) for w in list]
 
     
 def wordcount(wordlist):
