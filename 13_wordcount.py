@@ -50,8 +50,41 @@ Dicas:
 * Não construa todo o programade uma vez. Faça por partes executando
 e conferindo cada etapa do seu progresso.
 
-Ver solução otimizada segundo orientação do HB em:
-https://github.com/davischoll/pacote-desafios-pythonicos/blob/master/13_wordcount.py
+Solução otimizada segundo orientação do HB:
+
+from collections import Counter
+
+def report(words):
+    return '\n'.join([f'{w} {qty}' for w, qty in words])
+
+
+def asc(counter):
+    return sorted(counter.items())
+
+
+def top(counter, qty=20):
+    return sorted(counter.items(), reverse=True, key=lambda t: t[-1])[:qty]
+
+
+def read(filename):
+    with open(filename) as f:
+        return f.read()
+
+
+def count(content):
+    words = content.lower().split()
+    return Counter(words)
+
+
+def count_words(filename):
+    return report(asc(count(read(filename))))
+
+
+def top_words(filename):
+    return report(top(count(read(filename))))
+
+
+# Fonte da versão otimizada: https://github.com/davischoll/pacote-desafios-pythonicos/blob/master/13_wordcount.py
 """
 
 import sys
